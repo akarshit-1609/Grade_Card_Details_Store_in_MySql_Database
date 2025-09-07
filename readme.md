@@ -1,4 +1,4 @@
-# IGNOU Grade Card Details Convert into MySql Table
+# IGNOU Grade Card Details Store in MySql Database and also export in excel file
 
 
 ## Requirements
@@ -11,6 +11,12 @@ To run this program, you will need:
 
 ## Installation
 
+* **Clone the repository:**
+    ```bash
+    git clone https://github.com/akarshit-1609/Grade_Card_Details_Store_in_MySql_Database.git
+    ```
+    **Or download this repository.**
+
 * **Install Required Python Libraries:**
 
    Navigate to the program's directory in your terminal and install the necessary libraries using pip:
@@ -19,15 +25,11 @@ To run this program, you will need:
    cd program_directory
    pip install -r requirements.txt
 
-## Usage
+## Setup Instruction
 
 * **Change Variables in Source Code Before Run:**
     
     #### In grade_card.py
-    ```code
-    enrolment_number = Your Enrolment Number
-    programme_code = "Your Programme Code"
-    ```
     * For mysql configuration:
     ```code
     rootuser = mysql.connector.connect(
@@ -36,21 +38,36 @@ To run this program, you will need:
         password="Your Password",
         port="Your port "
     )
+
+    mysql_exe = "mysql"     # Path of mysql.exe
+    mysql_login_file = "--defaults-file=mylogin.cnf"    # Path of mylogin.cnf
     ```
+    #### In mylogin.cnf
+    * Modify values if not match your mysql configuration.
+    #### After Configuration
     * After this change navigate to the program's directory in your terminal and run program like this:
     ```bash
     cd program_directory
     python grade_card.py
     ```
-    If succesfully run program without an error than your details available in mysql database.
+    If succesfully run program without an error than you fetch your marks and automatically store in mysql database and you can export marks in Excel file.
 
-## Output
+## How to use
 
-* **To see your details:**
+* After run this program a gui window will be appear.
+
+* Enter Enrolnment number in first input field and replace to your course in second input field then click fetch button.
+
+* After you got done message then click on dropdown list and select your name.
+
+* After select your name, click on show button and your marks will be show in terminal.
+
+* Also you can export your marks in excel file which is save on desktop folder in your computer.
+
+* **To see your all data which is store in mysql:**
 
     In the mysql CLI:
     ```bash
     mysql> use grade_cards;
     mysql> show tables;
     ```
-    Hence you can see all details.
